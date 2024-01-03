@@ -1,0 +1,226 @@
+.AppNotifications {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  &Actions {
+    position: absolute;
+    left: 0;
+    transform: translateX(-100%);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    justify-content: flex-end;
+    position: absolute;
+    width: calc(150px + 15px);
+    height: 100%;
+    border-radius: 0 5px 5px 0;
+    padding-right: 1em;
+    @media only screen and (min-width: 700px) {
+      display: none;
+    }
+    & button:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+    @media only screen and (min-width: 700px) {
+      & button:first-child {
+        border-radius: 5px 0 0 5px;
+      }
+    }
+    &__clear,
+    &__unread {
+      outline: none;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      height: 100%;
+      &--text {
+        font-size: 12px;
+      }
+      & img {
+        height: 2em !important;
+        width: auto !important;
+      }
+    }
+    &__unread {
+      background-color: hsl(211, 100%, 60%);
+      color: hsla(180, 6%, 90%, 1);
+    }
+    &__clear {
+      background-color: hsl(211, 80%, 40%);
+      color: hsla(180, 6%, 90%, 1);
+    }
+  }
+
+  &__border {
+    @media only screen and (min-width: 700px) {
+      position: absolute;
+      left: 0;
+      top: 4.25rem;
+      width: 100%;
+      background-color: var(--bg-color-2);
+      height: 1px;
+    }
+  }
+
+  &__list {
+    width: 56%;
+    padding: 3rem 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .Label {
+      @media only screen and (max-width: 700px) {
+        display: none;
+      }
+    }
+
+    @media only screen and (max-width: 1200px) {
+      width: 75%;
+    }
+
+    @media only screen and (max-width: 1000px) {
+      width: 100%;
+    }
+
+    @media only screen and (max-width: 700px) {
+      gap: 0px;
+      padding: 0px;
+      padding-bottom: 15% !important;
+    }
+  }
+
+  &__list:nth-child(3) {
+    margin-top: 44px;
+  }
+
+  &__list:nth-child(4) {
+    margin-top: 16px;
+  }
+
+  &__list:last-child {
+    padding-bottom: 24px;
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    gap: 0.75rem;
+    width: 100%;
+    border: 1px solid var(--border-color-2);
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+
+    &--blue {
+      background: var(--accent-color-2);
+    }
+
+    &:hover {
+      background: var(--bg-color-2);
+    }
+
+    @media only screen and (max-width: 700px) {
+      padding: 1rem 1.25rem;
+      border-radius: 0px;
+      border: none;
+      border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
+
+      &:hover {
+        background: var(--bg-color-2);
+      }
+    }
+
+    &__status {
+      position: relative;
+
+      background: var(--bg-color-2);
+    }
+    img {
+      width: 4em;
+      height: 4em;
+      aspect-ratio: 1/1;
+      border-radius: 10px;
+      object-fit: cover;
+      align-self: flex-start;
+
+      @media only screen and (max-width: 700px) {
+        width: 48px;
+        height: 48px;
+      }
+    }
+    &__content {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-self: flex-start;
+      margin-top: 5px;
+
+      @media only screen and (max-width: 700px) {
+        margin-top: 2px;
+      }
+    }
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &__wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.3em;
+
+        span {
+          color: var(--fg-color-3);
+        }
+      }
+    }
+    &__title {
+      color: var(--fg-color-1);
+    }
+    &__message {
+      color: var(--fg-color-1);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-top: 0.25rem;
+      letter-spacing: -0.14px;
+
+      @media only screen and (max-width: 700px) {
+        margin-top: 0px;
+      }
+
+      + .Anchor {
+        margin-top: 0.75rem;
+      }
+    }
+    &__message.show_more {
+      max-height: unset;
+      -webkit-line-clamp: unset;
+    }
+    &__show_button {
+      color: #3396ff;
+      background: none;
+      border: none;
+
+      display: inline-block;
+      align-self: flex-start;
+      margin-top: 2px;
+
+      > span {
+        letter-spacing: -0.14px;
+      }
+
+      + .Anchor {
+        margin-top: 12px;
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+@import '../../styles/mixins.scss';
+
+.Login {
+  --main-display: unset;
+  background: var(--bg-color-3);
+  max-height: 100svh;
+  display: grid;
+  grid-template: var(--grid-template);
+  grid-template-columns: 1fr;
+  max-width: 100vw;
+  z-index: 0;
+  position: relative;
+
+  .Sidebar {
+    padding-top: 1.25em;
+    padding-bottom: 1em;
+    grid-area: sidebar;
+  }
+
+  .Main {
+    position: relative;
+    max-width: 100vw;
+    height: 100svh;
+    overflow-x: hidden;
+    padding: 1rem 0.085em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__connect-button {
+      min-width: fit-content;
+    }
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .Login:has(.TargetSelector):has(.ThreadSelector) {
+    @media only screen and (min-width: 1300px) {
+      grid-template-columns: 3.75rem 1fr;
+    }
+  }
+
+  .Login {
+    --sidebar-display: unset;
+    --main-display: unset;
+    grid-template: 'sidebar main';
+    grid-template-columns: 3.75rem 1fr;
+
+    @media only screen and (min-width: 1300px) {
+      grid-template-columns: 3.75rem 1fr;
+    }
+
+    .Main {
+      padding: 1rem 1.5rem;
+      grid-area: main;
+    }
+  }
+}
